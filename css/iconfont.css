@@ -1,16 +1,26 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4346416 */
-  src: url('//at.alicdn.com/t/c/font_4346416_gsnhlurnwc.woff2?t=1700970516465') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4346416_gsnhlurnwc.woff?t=1700970516465') format('woff'),
-       url('//at.alicdn.com/t/c/font_4346416_gsnhlurnwc.ttf?t=1700970516465') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4346416_a9iz92t7fm9.woff2?t=1702107832141') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4346416_a9iz92t7fm9.woff?t=1702107832141') format('woff'),
+       url('//at.alicdn.com/t/c/font_4346416_a9iz92t7fm9.ttf?t=1702107832141') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-QQ:before {
+  content: "\e882";
+  font-size: 24px;
+}
+
+.icon-youjian:before {
+  content: "\eb44";
+  font-size: 28px;
 }
 
 .icon-github:before {
