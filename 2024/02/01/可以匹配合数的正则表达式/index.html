@@ -16,7 +16,7 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          可以匹配合数的正则表达式 - Daucloud&#39;s Blog
+          可以判断素数的正则表达式 - Daucloud&#39;s Blog
         
     </title>
 
@@ -109,7 +109,7 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>可以匹配合数的正则表达式</h1>
+                        <h1>可以判断素数的正则表达式</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Daucloud on
@@ -244,7 +244,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>最近读到一个可以匹配合数的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure><br>这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
+                <p>最近读到一个可以判断素数的正则表达式（匹配成功则不是素数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure><br>这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
 <p>然而，仔细阅读了一下原理后却发现它的确可以，不过需要一步预处理，即把十进制数字转换为“1的数组”：0为空字符串，1为1，2为11，3为111……<br>至此，就可以开始我们的匹配：</p>
 <ul>
 <li><code>/^1?$/</code>很好理解，匹配到是空字符串（0）或 1，自然不是合数；</li>
