@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://Daucloud.github.io/2023/12/09/Hello-World/</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://Daucloud.github.io/2024/05/10/NLP-Course-of-Hugging-Face/</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://Daucloud.github.io/2024/01/18/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
     <loc>https://Daucloud.github.io/2024/03/17/%E6%BC%AB%E6%AD%A5%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2024-03-16</lastmod>
   </url>
@@ -9,15 +21,7 @@
     <lastmod>2024-02-02</lastmod>
   </url>
   <url>
-    <loc>https://Daucloud.github.io/2024/01/18/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2024-01-19</lastmod>
-  </url>
-  <url>
     <loc>https://Daucloud.github.io/2023/12/11/%E9%9B%AA/</loc>
     <lastmod>2024-01-19</lastmod>
-  </url>
-  <url>
-    <loc>https://Daucloud.github.io/2023/12/09/Hello-World/</loc>
-    <lastmod>2023-12-09</lastmod>
   </url>
 </urlset> 
