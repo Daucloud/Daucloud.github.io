@@ -3,77 +3,82 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="baidu-site-verification" content="093lY4ziMu" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="流云的小窝">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
-    <title>
-        
-          生成对抗网络 - Daucloud&#39;s Blog
-        
-    </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="google-site-verification"
+    content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"
+  />
+  <meta name="baidu-site-verification" content="093lY4ziMu" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no"
+  />
+  <meta name="description" content="流云的小窝" />
+  <meta name="keyword" content="" />
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <!--waline style-->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+  />
+  <link rel="stylesheet" href="/css/walineRoot.css" />
+  Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!--<link hhexo ref='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+  <title>
+     生成对抗网络 - Daucloud&#39;s Blog 
+  </title>
 
-    <link rel="canonical" href="https://Daucloud.github.io/2024/01/18/生成对抗网络/">
+  <link
+    rel="canonical"
+    href="https://Daucloud.github.io/2024/01/18/生成对抗网络/"
+  />
 
-    <!-- Bootstrap Core CSS -->
-    
+  <!-- Bootstrap Core CSS -->
+  
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 
-    <!-- Custom CSS --> 
-    
-        
+  <!-- Custom CSS -->
+   
 <link rel="stylesheet" href="/css/dusign-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/dusign-common-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/font-awesome.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/toc.css">
 
-        <!-- background effects end -->
-    
-    
-    <!-- Pygments Highlight CSS -->
-    
+  <!-- background effects end -->
+  
+
+  <!-- Pygments Highlight CSS -->
+  
 <link rel="stylesheet" href="/css/highlight.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/widget.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/rocket.css">
 
-
-    
+  
 <link rel="stylesheet" href="/css/signature.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/fonts.googleapis.css">
 
 
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
 
-    <!-- photography -->
-    
+  <!-- photography -->
+  
 <link rel="stylesheet" href="/css/photography.css">
 
 
-    <!-- ga & ba script hoook -->
-    <script></script>
+  <!-- ga & ba script hoook -->
+  <script></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -118,6 +123,18 @@
                             2024-01-18
                         </span>
 
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.3k</span> and
+                                Reading Time <span class="post-count">9</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
                         
 
                     </div>
@@ -235,18 +252,16 @@
 
 
     <!-- Main Content -->
-    <!-- Post Content -->
+    
+<!-- Post Content -->
 <article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <h1 id="生成对抗网络"><a href="#生成对抗网络" class="headerlink" title="生成对抗网络"></a>生成对抗网络</h1><p><del>本文是数据科学导论期末大作业展示的报告，拿来随便水一篇博客hh</del></p>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
+      >
+        <h1 id="生成对抗网络"><a href="#生成对抗网络" class="headerlink" title="生成对抗网络"></a>生成对抗网络</h1><p><del>本文是数据科学导论期末大作业展示的报告，拿来随便水一篇博客hh</del></p>
 <h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0    引言"></a>0    引言</h2><p>生成对抗网络 (Generative Adversarial Network, GAN) 是一种十分流行的机器学习模型。自2014年Ian Goodfellow等人首次提出以来，GAN迅速在学术界和工业界引发了热烈的反响，许多有影响力的工作层出不穷。图一是累积的GAN论文数量，其火热程度可见一斑。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181914378.png" alt=""></p>
 <center>Figure 1: Cumulative number of GAN papers</center>
@@ -334,51 +349,77 @@
 <p>Footnotes: </p>
 <p>[1]:Goodfellow, I. J., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A., &amp; Bengio, Y. (2014, June 10). <em>Generative Adversarial Networks</em>. arXiv.org. <a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener">https://arxiv.org/abs/1406.2661</a><br>[2]:事实上，这种 “纳什平衡” 是一种理想状态，实际训练难以达到。<br>[3]:关于梯度下降/上升法，可参考<a href="https://www.zhihu.com/question/305638940/answer/1639782992" target="_blank" rel="noopener">什么是梯度下降法？ - 马同学的回答 - 知乎</a><br>[4]:Mirza, M., &amp; Osindero, S. (2014, November 6). <em>Conditional generative adversarial nets</em>. arXiv.org. <a href="https://arxiv.org/abs/1411.1784" target="_blank" rel="noopener">https://arxiv.org/abs/1411.1784</a><br>[5]:Radford, A., Metz, L., &amp; Chintala, S. (2016, January 7). <em>Unsupervised representation learning with deep convolutional generative Adversarial Networks</em>. arXiv.org. <a href="https://arxiv.org/abs/1511.06434" target="_blank" rel="noopener">https://arxiv.org/abs/1511.06434</a><br>[6]:<a href="https://zhuanlan.zhihu.com/p/25071913" target="_blank" rel="noopener">令人拍案叫绝的Wasserstein GAN - 郑华滨的文章 - 知乎</a><br>[7]:Jin, Y., Zhang, J., Li, M., Tian, Y., Zhu, H., &amp; Fang, Z. (2017, August 18). <em>Towards the automatic anime characters creation with Generative Adversarial Networks</em>. arXiv.org. <a href="https://arxiv.org/abs/1708.05509" target="_blank" rel="noopener">https://arxiv.org/abs/1708.05509</a></p>
 
-                
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2024/02/01/可以匹配合数的正则表达式/" data-toggle="tooltip" data-placement="top" title="可以判断素数的正则表达式">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2023/12/11/雪/" data-toggle="tooltip" data-placement="top" title="雪">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
 
-                <!-- tip start -->
-                
+        <hr />
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a
+              href="/2024/02/01/可以匹配合数的正则表达式/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="可以判断素数的正则表达式"
+              >&larr; Previous Post</a
+            >
+          </li>
+           
+          <li class="next">
+            <a
+              href="/2023/12/11/雪/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="雪"
+              >Next Post &rarr;</a
+            >
+          </li>
+          
+        </ul>
 
-                
-                <!-- tip end -->
+        <!-- tip start -->
+         
+        <!-- tip end -->
 
-                <!-- Music start-->
-                
-                <!-- Music end -->
+        <!-- Music start-->
+        
+        <!-- Music end -->
 
-                <!-- Sharing -->
-                
-                <!-- Sharing -->
+        <!-- Sharing -->
+        
+        <!-- Sharing -->
 
-                <!-- gitment start -->
-                
-                <!-- gitment end -->
+        <!-- gitment start -->
+        
+        <!-- gitment end -->
 
-                <!-- 来必力City版安装代码 -->
-                
-                <!-- City版安装代码已完成 -->
+        <!-- 来必力City版安装代码 -->
+        
+        <!-- City版安装代码已完成 -->
 
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
+        <!-- disqus comment start -->
+        
+        <!-- disqus comment end -->
+
+        <!-- waline comment start -->
+        
+        <hr />
+        <div id="waline"></div>
+        <script type="module">
+          import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          init({
+            el: "#waline",
+            serverURL: "https://waline-inxu.vercel.app/",
+            reaction: true,
+            emoji: ['https://unpkg.com/@waline/emojis@1.2.0/alus','https://unpkg.com/@waline/emojis@1.2.0/bilibili','https://unpkg.com/@waline/emojis@1.2.0/tieba'],
+          });
+        </script>
+        
+        <!-- waline comment end -->
+      </div>
+
+      <!-- Tabe of Content -->
+      <!-- Table of Contents -->
 
     
       
@@ -395,70 +436,83 @@
       
     
 
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
 
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#GAN" title="GAN">GAN</a>
-                        
-                    </div>
-                </section>
-                
+      <!-- Sidebar Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container"
+      >
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5><a href="/tags/">FEATURED TAGS</a></h5>
+          <div class="tags">
+            
+            <a
+              class="tag"
+              href="/tags/#GAN"
+              title="GAN"
+              >GAN</a
+            >
+            
+          </div>
+        </section>
+        
 
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
+        <!-- Friends Blog -->
+        
+      </div>
     </div>
+  </div>
 </article>
 
-
-
-
+ 
 <!-- async load function -->
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+  function async(u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener(
+        "load",
+        function (e) {
+          c(null, e);
+        },
+        false
+      );
     }
+    s.parentNode.insertBefore(o, s);
+  }
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+  async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+    anchors.options = {
+      visible: "hover",
+      placement: "left",
+      icon: "ℬ",
+    };
+    anchors
+      .add()
+      .remove(".intro-header h1")
+      .remove(".subheading")
+      .remove(".sidebar-container h5");
+  });
 </script>
 
-
-<style  type="text/css">
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
+<style type="text/css">
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
     }
+  }
 </style>
 
 

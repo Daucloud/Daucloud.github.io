@@ -3,77 +3,82 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="baidu-site-verification" content="093lY4ziMu" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="流云的小窝">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
-    <title>
-        
-          Chapter1 Transformer Models - Daucloud&#39;s Blog
-        
-    </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="google-site-verification"
+    content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"
+  />
+  <meta name="baidu-site-verification" content="093lY4ziMu" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no"
+  />
+  <meta name="description" content="流云的小窝" />
+  <meta name="keyword" content="" />
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <!--waline style-->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+  />
+  <link rel="stylesheet" href="/css/walineRoot.css" />
+  Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!--<link hhexo ref='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+  <title>
+     Chapter1 Transformer Models - Daucloud&#39;s Blog 
+  </title>
 
-    <link rel="canonical" href="https://Daucloud.github.io/2024/05/10/NLP-Course-of-Hugging-Face/">
+  <link
+    rel="canonical"
+    href="https://Daucloud.github.io/2024/05/10/NLP-Course-of-Hugging-Face/"
+  />
 
-    <!-- Bootstrap Core CSS -->
-    
+  <!-- Bootstrap Core CSS -->
+  
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 
-    <!-- Custom CSS --> 
-    
-        
+  <!-- Custom CSS -->
+   
 <link rel="stylesheet" href="/css/dusign-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/dusign-common-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/font-awesome.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/toc.css">
 
-        <!-- background effects end -->
-    
-    
-    <!-- Pygments Highlight CSS -->
-    
+  <!-- background effects end -->
+  
+
+  <!-- Pygments Highlight CSS -->
+  
 <link rel="stylesheet" href="/css/highlight.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/widget.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/rocket.css">
 
-
-    
+  
 <link rel="stylesheet" href="/css/signature.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/fonts.googleapis.css">
 
 
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
 
-    <!-- photography -->
-    
+  <!-- photography -->
+  
 <link rel="stylesheet" href="/css/photography.css">
 
 
-    <!-- ga & ba script hoook -->
-    <script></script>
+  <!-- ga & ba script hoook -->
+  <script></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -120,6 +125,18 @@
                             2024-05-10
                         </span>
 
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">392</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
                         
 
                     </div>
@@ -237,18 +254,16 @@
 
 
     <!-- Main Content -->
-    <!-- Post Content -->
+    
+<!-- Post Content -->
 <article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <blockquote>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
+      >
+        <blockquote>
 <p>最近打算入门 NLP，在自学 🤗 的<a href="https://huggingface.co/learn/nlp-course/chapter1/1" target="_blank" rel="noopener">NLP Course</a>，但是感觉自己过于摆烂了。于是打算边学边做笔记，争取在期末之前把本课程学完</p>
 </blockquote>
 <h1 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline()"></a><code>Pipeline()</code></h1><ul>
@@ -320,47 +335,67 @@
 <li>encoder model only use the encoder of a Transformer model</li>
 </ul>
 
-                
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                    
-                    <li class="next">
-                        <a href="/2024/03/17/漫步杂记/" data-toggle="tooltip" data-placement="top" title="漫步杂记">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
 
-                <!-- tip start -->
-                
+        <hr />
+        <!-- Pager -->
+        <ul class="pager">
+           
+          <li class="next">
+            <a
+              href="/2024/03/17/漫步杂记/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="漫步杂记"
+              >Next Post &rarr;</a
+            >
+          </li>
+          
+        </ul>
 
-                
-                <!-- tip end -->
+        <!-- tip start -->
+         
+        <!-- tip end -->
 
-                <!-- Music start-->
-                
-                <!-- Music end -->
+        <!-- Music start-->
+        
+        <!-- Music end -->
 
-                <!-- Sharing -->
-                
-                <!-- Sharing -->
+        <!-- Sharing -->
+        
+        <!-- Sharing -->
 
-                <!-- gitment start -->
-                
-                <!-- gitment end -->
+        <!-- gitment start -->
+        
+        <!-- gitment end -->
 
-                <!-- 来必力City版安装代码 -->
-                
-                <!-- City版安装代码已完成 -->
+        <!-- 来必力City版安装代码 -->
+        
+        <!-- City版安装代码已完成 -->
 
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
+        <!-- disqus comment start -->
+        
+        <!-- disqus comment end -->
+
+        <!-- waline comment start -->
+        
+        <hr />
+        <div id="waline"></div>
+        <script type="module">
+          import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          init({
+            el: "#waline",
+            serverURL: "https://waline-inxu.vercel.app/",
+            reaction: true,
+            emoji: ['https://unpkg.com/@waline/emojis@1.2.0/alus','https://unpkg.com/@waline/emojis@1.2.0/bilibili','https://unpkg.com/@waline/emojis@1.2.0/tieba'],
+          });
+        </script>
+        
+        <!-- waline comment end -->
+      </div>
+
+      <!-- Tabe of Content -->
+      <!-- Table of Contents -->
 
     
       
@@ -377,72 +412,90 @@
       
     
 
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
 
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
-                        
-                          <a class="tag" href="/tags/#🤗" title="🤗">🤗</a>
-                        
-                    </div>
-                </section>
-                
+      <!-- Sidebar Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container"
+      >
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5><a href="/tags/">FEATURED TAGS</a></h5>
+          <div class="tags">
+            
+            <a
+              class="tag"
+              href="/tags/#NLP"
+              title="NLP"
+              >NLP</a
+            >
+            
+            <a
+              class="tag"
+              href="/tags/#🤗"
+              title="🤗"
+              >🤗</a
+            >
+            
+          </div>
+        </section>
+        
 
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
+        <!-- Friends Blog -->
+        
+      </div>
     </div>
+  </div>
 </article>
 
-
-
-
+ 
 <!-- async load function -->
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+  function async(u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener(
+        "load",
+        function (e) {
+          c(null, e);
+        },
+        false
+      );
     }
+    s.parentNode.insertBefore(o, s);
+  }
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+  async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+    anchors.options = {
+      visible: "hover",
+      placement: "left",
+      icon: "ℬ",
+    };
+    anchors
+      .add()
+      .remove(".intro-header h1")
+      .remove(".subheading")
+      .remove(".sidebar-container h5");
+  });
 </script>
 
-
-<style  type="text/css">
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
+<style type="text/css">
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
     }
+  }
 </style>
 
 

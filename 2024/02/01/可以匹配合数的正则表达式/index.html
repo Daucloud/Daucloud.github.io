@@ -3,77 +3,82 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="baidu-site-verification" content="093lY4ziMu" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="流云的小窝">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
-    <title>
-        
-          可以判断素数的正则表达式 - Daucloud&#39;s Blog
-        
-    </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="google-site-verification"
+    content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"
+  />
+  <meta name="baidu-site-verification" content="093lY4ziMu" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no"
+  />
+  <meta name="description" content="流云的小窝" />
+  <meta name="keyword" content="" />
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <!--waline style-->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+  />
+  <link rel="stylesheet" href="/css/walineRoot.css" />
+  Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!--<link hhexo ref='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+  <title>
+     可以判断素数的正则表达式 - Daucloud&#39;s Blog 
+  </title>
 
-    <link rel="canonical" href="https://Daucloud.github.io/2024/02/01/可以匹配合数的正则表达式/">
+  <link
+    rel="canonical"
+    href="https://Daucloud.github.io/2024/02/01/可以匹配合数的正则表达式/"
+  />
 
-    <!-- Bootstrap Core CSS -->
-    
+  <!-- Bootstrap Core CSS -->
+  
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 
-    <!-- Custom CSS --> 
-    
-        
+  <!-- Custom CSS -->
+   
 <link rel="stylesheet" href="/css/dusign-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/dusign-common-light.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/font-awesome.css">
-
-        
+ 
 <link rel="stylesheet" href="/css/toc.css">
 
-        <!-- background effects end -->
-    
-    
-    <!-- Pygments Highlight CSS -->
-    
+  <!-- background effects end -->
+  
+
+  <!-- Pygments Highlight CSS -->
+  
 <link rel="stylesheet" href="/css/highlight.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/widget.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/rocket.css">
 
-
-    
+  
 <link rel="stylesheet" href="/css/signature.css">
-
-
-    
+ 
 <link rel="stylesheet" href="/css/fonts.googleapis.css">
 
 
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
 
-    <!-- photography -->
-    
+  <!-- photography -->
+  
 <link rel="stylesheet" href="/css/photography.css">
 
 
-    <!-- ga & ba script hoook -->
-    <script></script>
+  <!-- ga & ba script hoook -->
+  <script></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -116,6 +121,18 @@
                             2024-02-01
                         </span>
 
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">742</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
                         
 
                     </div>
@@ -233,18 +250,16 @@
 
 
     <!-- Main Content -->
-    <!-- Post Content -->
+    
+<!-- Post Content -->
 <article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <p>最近读到一个可以判断素数的正则表达式（匹配成功则不是素数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure><br>这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
+      >
+        <p>最近读到一个可以判断素数的正则表达式（匹配成功则不是素数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure><br>这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
 <p>然而，仔细阅读了一下原理后却发现它的确可以，不过需要一步预处理，即把十进制数字转换为“1的数组”：0为空字符串，1为1，2为11，3为111……<br>至此，就可以开始我们的匹配：</p>
 <ul>
 <li><code>/^1?$/</code>很好理解，匹配到是空字符串（0）或 1，自然不是合数；</li>
@@ -258,118 +273,152 @@
 <p>可见，<code>/^1?$|^(11+?)\1+$/</code>的实现想法是非常朴素的：列举比$n$小的所有正整数$i$，判断$n$是否可以被$i$整除。比如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个自然数是否为素数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)<span class="keyword">if</span> (n % i == <span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>但是，得到这么精炼的表达式的关键实则在于对于正则表达式匹配机制的深刻理解(懒惰匹配和回溯法的结合)，而这正是值得我们深思和学习的地方。</p>
 
-                
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2024/03/17/漫步杂记/" data-toggle="tooltip" data-placement="top" title="漫步杂记">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2024/01/18/生成对抗网络/" data-toggle="tooltip" data-placement="top" title="生成对抗网络">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
 
-                <!-- tip start -->
-                
+        <hr />
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a
+              href="/2024/03/17/漫步杂记/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="漫步杂记"
+              >&larr; Previous Post</a
+            >
+          </li>
+           
+          <li class="next">
+            <a
+              href="/2024/01/18/生成对抗网络/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="生成对抗网络"
+              >Next Post &rarr;</a
+            >
+          </li>
+          
+        </ul>
 
-                
-                <!-- tip end -->
+        <!-- tip start -->
+         
+        <!-- tip end -->
 
-                <!-- Music start-->
-                
-                <!-- Music end -->
+        <!-- Music start-->
+        
+        <!-- Music end -->
 
-                <!-- Sharing -->
-                
-                <!-- Sharing -->
+        <!-- Sharing -->
+        
+        <!-- Sharing -->
 
-                <!-- gitment start -->
-                
-                <!-- gitment end -->
+        <!-- gitment start -->
+        
+        <!-- gitment end -->
 
-                <!-- 来必力City版安装代码 -->
-                
-                <!-- City版安装代码已完成 -->
+        <!-- 来必力City版安装代码 -->
+        
+        <!-- City版安装代码已完成 -->
 
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
+        <!-- disqus comment start -->
+        
+        <!-- disqus comment end -->
+
+        <!-- waline comment start -->
+        
+        <hr />
+        <div id="waline"></div>
+        <script type="module">
+          import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          init({
+            el: "#waline",
+            serverURL: "https://waline-inxu.vercel.app/",
+            reaction: true,
+            emoji: ['https://unpkg.com/@waline/emojis@1.2.0/alus','https://unpkg.com/@waline/emojis@1.2.0/bilibili','https://unpkg.com/@waline/emojis@1.2.0/tieba'],
+          });
+        </script>
+        
+        <!-- waline comment end -->
+      </div>
+
+      <!-- Tabe of Content -->
+      <!-- Table of Contents -->
 
     
       
     
 
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
 
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                    </div>
-                </section>
-                
+      <!-- Sidebar Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container"
+      >
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5><a href="/tags/">FEATURED TAGS</a></h5>
+          <div class="tags">
+            
+          </div>
+        </section>
+        
 
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
+        <!-- Friends Blog -->
+        
+      </div>
     </div>
+  </div>
 </article>
 
-
-
-
+ 
 <!-- async load function -->
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+  function async(u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener(
+        "load",
+        function (e) {
+          c(null, e);
+        },
+        false
+      );
     }
+    s.parentNode.insertBefore(o, s);
+  }
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+  async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+    anchors.options = {
+      visible: "hover",
+      placement: "left",
+      icon: "ℬ",
+    };
+    anchors
+      .add()
+      .remove(".intro-header h1")
+      .remove(".subheading")
+      .remove(".sidebar-container h5");
+  });
 </script>
 
-
-<style  type="text/css">
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
+<style type="text/css">
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
     }
+  }
 </style>
 
 
