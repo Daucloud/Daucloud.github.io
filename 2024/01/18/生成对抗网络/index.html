@@ -95,7 +95,7 @@
     header.intro-header{
     
             
-                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181946411.jpg')
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://github.com/daucloud/imagecdn/raw/main/test/202401181946411.jpg')
                 /*post*/
             
         
@@ -194,14 +194,14 @@
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -263,7 +263,7 @@
       >
         <h1 id="生成对抗网络"><a href="#生成对抗网络" class="headerlink" title="生成对抗网络"></a>生成对抗网络</h1><p><del>本文是数据科学导论期末大作业展示的报告，拿来随便水一篇博客hh</del></p>
 <h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0    引言"></a>0    引言</h2><p>生成对抗网络 (Generative Adversarial Network, GAN) 是一种十分流行的机器学习模型。自2014年Ian Goodfellow等人首次提出以来，GAN迅速在学术界和工业界引发了热烈的反响，许多有影响力的工作层出不穷。图一是累积的GAN论文数量，其火热程度可见一斑。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181914378.png" alt=""></p>
+<p><img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181914378.png" alt=""></p>
 <center>Figure 1: Cumulative number of GAN papers</center>
 
 <p>本文将对GAN做简要介绍，主要包括GAN原始模型、经典变体和应用成就。</p>
@@ -280,7 +280,7 @@
 <li><strong>迭代：</strong> 循环1. 2.至一定次数，此时生成器$G$产生的样本足以“以假乱真”，判别器$D$辨认真实样本和生成样本成功的概率都为$\frac1 2$，二者达到了纳什平衡<sup><a href="#fn_2" id="reffn_2">2</a></sup>。</li>
 </ol>
 <blockquote>
-<p>训练示意图：<img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181914603.png" alt=""></p>
+<p>训练示意图：<img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181914603.png" alt=""></p>
 <center>Figure 2: 训练过程示意图</center>
 
 <p>图中，$z$轴是输入生成器的随机噪声，其通过生成器(箭头)映射到样本集$x$轴。黑色散点是真实数据集；绿色实线是生成样本集，蓝色虚线是判别器（越远离$x$轴，其值越接近于1，即其认为该样本来自真实数据集的概率越大）。</p>
@@ -316,7 +316,7 @@
 <li>批归一化(Batch Normalization)：生成器和判别器都使用BN层。</li>
 <li>修改激活函数：生成器输出层使用Tanh，其余层使用ReLU；判别器均使用LeakyReLU</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181914603.png" alt=""></p>
+<p><img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181914603.png" alt=""></p>
 <center>Figure 4: 生成器转置卷积层示意图</center>
 
 <h3 id="2-3-WGAN6"><a href="#2-3-WGAN6" class="headerlink" title="2.3    WGAN6"></a>2.3    WGAN<sup><a href="#fn_6" id="reffn_6">6</a></sup></h3><p>WGAN(Wasserstein Generative Adversarial Networks)引入了Wasserstein距离代替原来的JS散度作为GAN的损失函数，彻底解决了GAN训练不稳定的问题，是GAN发展史上里程碑式的工作之一。</p>
@@ -332,15 +332,15 @@
 <p>改进虽然简单，但是成效巨大。</p>
 <h2 id="3-应用举例"><a href="#3-应用举例" class="headerlink" title="3    应用举例"></a>3    应用举例</h2><h3 id="3-1-「Edmond-de-Belamy」"><a href="#3-1-「Edmond-de-Belamy」" class="headerlink" title="3.1    「Edmond de Belamy」"></a>3.1    「Edmond de Belamy」</h3><p>在2018年末的佳士得纽约拍卖场上，来自巴黎的艺术团队<em>Obvious</em>使用GAN生成的画作「Edmond de Belamy」以超出估价40倍的43.25万美元成交，其右下角便印有纵横GAN领域的著名公式： <script type="math/tex">\min_G\max_D \mathbb{E}_{x}[\log D(x)]+\mathbb{E}_{z}[\log(1-D(G(z)))]</script></p>
 <p>1968年，毕加索曾说：”计算机是没有用的。它们只会告诉你答案”。但在同一场拍卖会上，没有一幅毕加索的画作成交价格超过了「Edmond de Belamy」，这不禁令人唏嘘不已。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181922436.png" alt=""></p>
+<p><img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181922436.png" alt=""></p>
 <center>Figure 6: 「Edmond de Belamy」</center>
 
 <h3 id="3-2-This-Person-Does-Not-Exist"><a href="#3-2-This-Person-Does-Not-Exist" class="headerlink" title="3.2    This Person Does Not Exist"></a>3.2    This Person Does Not Exist</h3><p><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">thispersondoesnotexist.com </a>每次进入该网址，都会生成一张世界上并不存在的人脸，而这正是使用GAN进行生成的。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181917230.png" alt=""></p>
+<p><img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181917230.png" alt=""></p>
 <center>Figure 7: This Person Does Not Exist</center>
 
 <h3 id="3-3-二次元头像生成7"><a href="#3-3-二次元头像生成7" class="headerlink" title="3.3    二次元头像生成7"></a>3.3    二次元头像生成<sup><a href="#fn_7" id="reffn_7">7</a></sup></h3><p>使用GAN，你可以随心所欲生成二次元<del>老婆</del>头像：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202401181917189.png" alt=""></p>
+<p><img src="https://github.com/daucloud/imagecdn/raw/main/test/202401181917189.png" alt=""></p>
 <center>Figure 8: GAN生成的二次元头像</center>
 
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4    总结"></a>4    总结</h2><p>GAN是一种应用广泛、潜力巨大的生成模型。它使用判别器和生成器进行对抗性训练，并最终产生足够逼真的图像。但GAN在训练过程中通常存在生成样本过于随机、训练不稳定等缺点，因此涌现出了诸多变体对其进行改进：CGAN、DCGAN、WGAN …… </p>
