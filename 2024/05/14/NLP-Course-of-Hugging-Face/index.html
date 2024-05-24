@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="google-site-verification"
+    content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"
+  />
+  <meta name="baidu-site-verification" content="093lY4ziMu" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no"
+  />
+  <meta name="description" content="流云的小窝" />
+  <meta name="keyword" content="" />
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <!--waline style-->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+  />
+  <link rel="stylesheet" href="/css/walineRoot.css" />
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!--<link hhexo ref='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+  <title>
+     Chapter2 Using 🤗 Transformers - Daucloud&#39;s Blog 
+  </title>
+
+  <link
+    rel="canonical"
+    href="https://Daucloud.github.io/2024/05/14/NLP-Course-of-Hugging-Face/"
+  />
+
+  <!-- Bootstrap Core CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+  <!-- Custom CSS -->
+   
+<link rel="stylesheet" href="/css/dusign-light.css">
+ 
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+ 
+<link rel="stylesheet" href="/css/font-awesome.css">
+ 
+<link rel="stylesheet" href="/css/toc.css">
+
+  <!-- background effects end -->
+  
+
+  <!-- Pygments Highlight CSS -->
+  
+<link rel="stylesheet" href="/css/highlight.css">
+ 
+<link rel="stylesheet" href="/css/widget.css">
+ 
+<link rel="stylesheet" href="/css/rocket.css">
+
+  
+<link rel="stylesheet" href="/css/signature.css">
+ 
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
+
+  <!-- photography -->
+  
+<link rel="stylesheet" href="/css/photography.css">
+
+
+  <!-- ga & ba script hoook -->
+  <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://github.com/daucloud/imagecdn/raw/main/test/202405101803758.png')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#🤗" title="🤗">🤗</a>
+                            
+                        </div>
+                        <h1>Chapter2 Using 🤗 Transformers</h1>
+                        <h2 class="subheading">NLP Course of Hugging Face</h2>
+                        <span class="meta">
+                            Posted by Daucloud on
+                            2024-05-14
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.2k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Daucloud&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
+      >
+        <h1 id="Behind-the-pipeline"><a href="#Behind-the-pipeline" class="headerlink" title="Behind the pipeline"></a>Behind the pipeline</h1><ul>
+<li><code>pipeline()</code> groups the “preprocessing-pass the inputs through the model-postprocessing” together<br><img src="https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202404291430930.png" alt="|525"><h2 id="Preprocessing-with-a-tokenizer"><a href="#Preprocessing-with-a-tokenizer" class="headerlink" title="Preprocessing with a tokenizer"></a>Preprocessing with a tokenizer</h2></li>
+<li>convert the raw context into vectors with a tokenizer:<ol>
+<li>splitting the input into tokens(words, subwords, symbols like punctuation)</li>
+<li>each token to an integer</li>
+<li>adding additional inputs that maybe useful to the model<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line"></span><br><span class="line">checkpoint=<span class="string">"checkoutName"</span></span><br><span class="line">tokenizer=AutoTokenizer.from_pretrained(checkpoint)<span class="comment"># all the preprocessing needs to be done exactly the same way as when the model was pretrained</span></span><br><span class="line">raw_input=<span class="string">"context"</span></span><br><span class="line">inputs=tokenizer(raw_inputs,padding=<span class="literal">True</span>,truncation=<span class="literal">True</span>,return_tensors=<span class="string">"pt"</span>)</span><br><span class="line"><span class="comment"># as for the return_tensors, pt: Pytorch, tf: TensorFlow, np: Numpy, jax: JAX</span></span><br><span class="line">print(inputs)</span><br><span class="line"><span class="comment">### the results, is a dictionary, which contains two key-value pair</span></span><br><span class="line">&#123;</span><br><span class="line">	 <span class="string">"input_ids"</span>: tensor([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]), <span class="comment"># the unique identifiers for each token</span></span><br><span class="line">	 <span class="string">"attention_mask"</span>: tensor([<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Going-through-the-model"><a href="#Going-through-the-model" class="headerlink" title="Going through the model"></a>Going through the model</h2></li>
+</ol>
+</li>
+<li>convert input IDs into logits<br><img src="https://raw.githubusercontent.com/Daucloud/imagecdn/main/test/202405140923963.png" alt="image.png"></li>
+<li>🤗 provides the <code>AutoModel</code> class, which corresponds to the hidden states step<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModel</span><br><span class="line">checkout=<span class="string">"checkoutname"</span></span><br><span class="line">model=AutoModel.from_pretrained(checkout)</span><br><span class="line">outputs=(**inputs)</span><br><span class="line">	<span class="comment"># the Automodel converts the inputs(seen last part) into a three-dimensional vector:</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1. batch size: the number of sequences processed at a time</span></span><br><span class="line"><span class="string">2. sequence length</span></span><br><span class="line"><span class="string">3. Hidden size: usually very large(768, 3072, even more)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(outputs.last_hidden_state.size) <span class="comment"># torch.Size([2,16,768])</span></span><br></pre></td></tr></table></figure></li>
+<li>There are also some other architectures for specific tasks. You can understand them as <code>AutoModel</code> followed by the head<ul>
+<li>ForCausalLM</li>
+<li>ForMaskedLM</li>
+<li>ForMultipleChoice</li>
+<li>ForQuestionAnswering</li>
+<li>ForSequenceClassification</li>
+<li>ForTokenClassification</li>
+<li>other 🤗<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForSequenceClassification</span><br><span class="line">checkout=<span class="string">"checkoutName"</span></span><br><span class="line">model=AutoModelForSequenceClassification.from_pretrained(checkout)</span><br><span class="line">outputs=(**inputs)</span><br><span class="line">print(outputs.logits.shape) <span class="comment">#torch.Size([2,2]), the size is much smaller than the results of AutoModel</span></span><br></pre></td></tr></table></figure>
+<h2 id="Postprocessing-the-output"><a href="#Postprocessing-the-output" class="headerlink" title="Postprocessing the output"></a>Postprocessing the output</h2></li>
+</ul>
+</li>
+<li>Convert the logits into predictions , aka,  convert the raw, unnormalized scores to probabilties which can be understood by human</li>
+<li>Usually we will use a SoftMax Layer to work on this<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line">predictions=torch.nn.functional.softmax(outputs.logits, dim=<span class="number">-1</span>)</span><br><span class="line">print(predictions)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">tensor([[5.0e-2,9.5e-1],[1.0e-1,9.0-1]],grad_fn=&lt;SoftmaxBackward&gt;)</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># we can inspect the id2label the following way:</span></span><br><span class="line">model.config.id2label <span class="comment"># &#123;0:'NEGATIVE',1:'POSITIVE'&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h1></li>
+<li><code>AutoClass</code> and it relatives mentioned above are simple wrappers which can automatically guess the architechture from your checkpoint<h2 id="Creating-A-Transformer"><a href="#Creating-A-Transformer" class="headerlink" title="Creating A Transformer"></a>Creating A Transformer</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> BertConfig, BertModel, </span><br><span class="line">config=BertConfig()</span><br><span class="line">model=BertModel(config)<span class="comment"># in this way, you will get a randomly initialized bert model, which will output gibberish</span></span><br><span class="line">model=BertModel.from_pretrained(<span class="string">"bert-base-cased"</span>)<span class="comment"># the model is instantiate with the checkpoint trained by the bert team, which is less time-consuming and more environment-friendly; you can also replace the BertModel with AutoClass. Actually, it is more suggested to use AutoModel rather than a specific model, which will also work even if the architechture is different</span></span><br></pre></td></tr></table></figure></li>
+<li>once you used the checkpoint, the weights are downloaded and cached to <code>~/.cache/huggingface/transformers</code></li>
+<li>you can use the <code>save_pretrained</code> method to save the model to your disk:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model.save_pretrained(<span class="string">"path/to/directory"</span>)</span><br><span class="line">!ls path/to/directory</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">config.json pytorch_model.bin</span></span><br><span class="line"><span class="string"># the two files go hand in hand, the `config.json` contains the attributes necessary to build the architechture, and the `pytorch_model.bin` contains the weights(checkpoints) which are the parameters of your model</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h1 id="Tokenizers"><a href="#Tokenizers" class="headerlink" title="Tokenizers"></a>Tokenizers</h1><h2 id="Algorithms-for-tokenization"><a href="#Algorithms-for-tokenization" class="headerlink" title="Algorithms for tokenization"></a>Algorithms for tokenization</h2><h3 id="Word-Based"><a href="#Word-Based" class="headerlink" title="Word-Based"></a>Word-Based</h3></li>
+</ul>
+<ol>
+<li>split the the words according to the given marks, such as spaces, punctuations…</li>
+<li>map each word to an ID. The ID is determined through the vocabulary, which is usually very large. For example, the size of a English vocabulary may be as large as 500,000</li>
+<li>As for the words that are not in the vocabulary, they are often represented by the unkown token such as <code>[UNK]</code> or  <code>&lt;unk&gt;</code>. However, as you can imagine, this will lose imformation, so it is sensible to avoid the unknown tokens as much as possible<h3 id="Character-Based"><a href="#Character-Based" class="headerlink" title="Character-Based"></a>Character-Based</h3></li>
+<li>split the sentences by the characters<blockquote>
+<p>This method will defintely reduce the amount of unknown tokens. However, is will also cause the vocabulary to be too large and the results less meaningful</p>
+<h3 id="Subword-Tokenization"><a href="#Subword-Tokenization" class="headerlink" title="Subword Tokenization"></a>Subword Tokenization</h3></blockquote>
+</li>
+<li>representing the rare words with the composite of frequently used words<blockquote>
+<p>this will spare the space while remaining the semantic meanings as much as possible, which is especially useful to agglutinative languages such as Turkish</p>
+</blockquote>
+</li>
+</ol>
+<p><em>examples</em>:<br>-<br>Byte -level BPE: GPT-2</p>
+<ul>
+<li>WordPiece: BERT</li>
+<li>SentencePiece or Unigram: multilingual models<h2 id="Loading-and-Saving"><a href="#Loading-and-Saving" class="headerlink" title="Loading and Saving"></a>Loading and Saving</h2></li>
+<li>nearly the same as loading and saving the models: use <code>from_pretrained</code> and <code>save_pretrained</code></li>
+<li>the things that cached<ul>
+<li>algorithms: similar to <em>architechture</em> of the models</li>
+<li>vocabularay: similar to <em>weights</em>of the models<h2 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h2></li>
+</ul>
+</li>
+<li>there are two steps while encoding<h3 id="tokenization"><a href="#tokenization" class="headerlink" title="tokenization"></a>tokenization</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line"></span><br><span class="line">tokenizer=AutoTokenizer.from_pretrained(<span class="string">"modelName"</span>)</span><br><span class="line">tokens=tokenizer.tokenize(<span class="string">"sequence"</span>)</span><br><span class="line"></span><br><span class="line">print(tokens) <span class="comment"># print the results of spilting</span></span><br></pre></td></tr></table></figure>
+<h3 id="From-tokens-to-input-IDs"><a href="#From-tokens-to-input-IDs" class="headerlink" title="From tokens to input IDs"></a>From tokens to input IDs</h3></li>
+<li>the models can only accept the tensors as inputs, so we need to map our tokens in to numbers</li>
+<li>use the vocabulary to work on this, which is a dictionary mapping the tokens to numbers<h1 id="Handling-Multiple-Sequences"><a href="#Handling-Multiple-Sequences" class="headerlink" title="Handling Multiple Sequences"></a>Handling Multiple Sequences</h1><h2 id="Models-expect-a-batch-of-inputs"><a href="#Models-expect-a-batch-of-inputs" class="headerlink" title="Models expect a batch of inputs"></a>Models expect a batch of inputs</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForSequenceClassification</span><br><span class="line"></span><br><span class="line">model=AutoModelForSequenceClassification.from_pretrained(<span class="string">"checkpointName"</span>)</span><br><span class="line">tokenizer=AutoTokenizer.from_pretrained(<span class="string">"checkpointName"</span>)</span><br><span class="line"></span><br><span class="line">tokens=tokenizer.tokenize(<span class="string">"raw inputs"</span>)</span><br><span class="line">token_ids=tokenizer.convert_tokens_to_ids(tokens)</span><br><span class="line">input_ids=torch.tensor(token_ids)</span><br><span class="line"></span><br><span class="line">model(input_ids)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">model([input_ids]) <span class="comment"># this line will succeed</span></span><br></pre></td></tr></table></figure>
+<h2 id="Padding-the-inputs"><a href="#Padding-the-inputs" class="headerlink" title="Padding the inputs"></a>Padding the inputs</h2></li>
+<li>the batch of inputs must have the same lengths to get through the model, for the shape of tensor is rectangle. This is why will introduce the <code>padding_id</code> to pad the inputs. You can use the attributes <code>pad_token_id</code> of a tokenizer to get access it<h2 id="Attention-masks"><a href="#Attention-masks" class="headerlink" title="Attention masks"></a>Attention masks</h2></li>
+<li>the key features of transformers is the attention layers that contextualize each token. As a consequence, the padding ids will also make a difference to the output, which is not expected.</li>
+<li>The Attention masks comes for this. The value 0 represents ignoring the corresponding tokens and 1 do the opposite<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">batched_ids = [</span><br><span class="line">    [<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>],</span><br><span class="line">    [<span class="number">200</span>, <span class="number">200</span>, tokenizer.pad_token_id],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">attention_mask = [</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">outputs = model(torch.tensor(batched_ids), attention_mask=torch.tensor(attention_mask))</span><br><span class="line">print(outputs.logits)</span><br></pre></td></tr></table></figure>
+<h2 id="Longer-sequences"><a href="#Longer-sequences" class="headerlink" title="Longer sequences"></a>Longer sequences</h2></li>
+<li>there exists a limit to the length with all transformer models. If you want to pass a sequence longer than the limits, you should <strong>truncate</strong> your sequence or change to a model allowing longer inputs.<h1 id="Putting-it-all-together"><a href="#Putting-it-all-together" class="headerlink" title="Putting it all together"></a>Putting it all together</h1><h2 id="put-the-tokenization-steps-together"><a href="#put-the-tokenization-steps-together" class="headerlink" title="put the tokenization steps together"></a>put the tokenization steps together</h2></li>
+<li>As a review, there are three steps we need to do to tokenize the raw inputs: <code>tokenizer.tokenize()</code>—&gt;<code>tokenizer.convert_tokens_to_ids()</code>—&gt;<code>torch.tensor()</code></li>
+<li>For convenience, the <code>🤗 transformers</code> actually provides a high-level function to put all these steps together, which is <code>tokenizer()</code> itself<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line">tokenizer=AutoTokenizer.from_pretrained(<span class="string">"checkpointName"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line">sequence=<span class="string">"1"</span></span><br><span class="line">input1=tokenizer(sequence) <span class="comment"># valid</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">sequences=[<span class="string">"1"</span>,<span class="string">"2"</span>]</span><br><span class="line">input2=tokenizer(sequneces)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 pad</span></span><br><span class="line">input3=tokenizer(sequences, padding=<span class="string">"longest"</span>) <span class="comment"># pad to the maximum sequece length</span></span><br><span class="line">input4=tokenizer(sequences, padding=<span class="string">"max_length"</span>) <span class="comment"># pad to the model maximum length</span></span><br><span class="line">input5=tokenizer(sequences, padding=<span class="string">"max_length"</span>, max_length=<span class="number">8</span>) <span class="comment"># pad to the specified maximum length</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4 truncate</span></span><br><span class="line">input6=tokenizer(sequences, truncation=<span class="literal">True</span>) <span class="comment"># truncate the sequences longer than the model limit</span></span><br><span class="line">input7=tokenizer(sequences, max_length=<span class="number">8</span>, truncation=<span class="literal">True</span>) <span class="comment"># truncate the sequences longer than the specified length</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5 switch the type of tensors returned</span></span><br><span class="line">input8=tokenizer(sequences, padding=<span class="literal">True</span>, return_tensors=<span class="string">"pt"</span>) <span class="comment"># pt stands for the Pytorch, tf for TensorFlow, np for NumPy</span></span><br></pre></td></tr></table></figure>
+<h2 id="Special-words"><a href="#Special-words" class="headerlink" title="Special words"></a>Special words</h2></li>
+<li>Some models add the special token such as <code>[CLS]</code> at the beginning, some add the special token such as <code>[SEP]</code> at the end, some add both, and some add none.<h2 id="Wrapping-up-From-tokenizer-to-model"><a href="#Wrapping-up-From-tokenizer-to-model" class="headerlink" title="Wrapping up: From tokenizer to model"></a>Wrapping up: From tokenizer to model</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transfomers <span class="keyword">import</span> AutoTokenizer, AutoModel</span><br><span class="line"></span><br><span class="line">tokenizer=Autokenizer.form_pretrained(<span class="string">"checkpointName"</span>)</span><br><span class="line">model=AutoModel.form_pretrained(<span class="string">"checkpointName"</span>)</span><br><span class="line"></span><br><span class="line">sequence=<span class="string">"1"</span></span><br><span class="line">Input=tokenizer(sequence)</span><br><span class="line">Output=model(**Input)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+
+        <hr />
+        <!-- Pager -->
+        <ul class="pager">
+           
+          <li class="next">
+            <a
+              href="/2024/05/10/NLP-Course-of-Hugging-Face/"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Chapter1 Transformer Models"
+              >Next Post &rarr;</a
+            >
+          </li>
+          
+        </ul>
+
+        <!-- tip start -->
+         
+        <!-- tip end -->
+
+        <!-- Music start-->
+        
+        <!-- Music end -->
+
+        <!-- Sharing -->
+        
+        <!-- Sharing -->
+
+        <!-- gitment start -->
+        
+        <!-- gitment end -->
+
+        <!-- 来必力City版安装代码 -->
+        
+        <!-- City版安装代码已完成 -->
+
+        <!-- disqus comment start -->
+        
+        <!-- disqus comment end -->
+
+        <!-- waline comment start -->
+        
+        <hr />
+        <div id="waline"></div>
+        <script type="module">
+          import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          init({
+            el: "#waline",
+            recordIP: false,
+            serverURL: "https://waline-inxu.vercel.app/",
+            reaction: true,
+            emoji: ['https://unpkg.com/@waline/emojis@1.2.0/alus','https://unpkg.com/@waline/emojis@1.2.0/bilibili','https://unpkg.com/@waline/emojis@1.2.0/tieba'],
+          });
+        </script>
+        
+        <!-- waline comment end -->
+      </div>
+
+      <!-- Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Behind-the-pipeline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Behind the pipeline</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Preprocessing-with-a-tokenizer"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Preprocessing with a tokenizer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Going-through-the-model"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Going through the model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Postprocessing-the-output"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Postprocessing the output</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Models"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Models</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Creating-A-Transformer"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Creating A Transformer</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Tokenizers"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Tokenizers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Algorithms-for-tokenization"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Algorithms for tokenization</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Word-Based"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">Word-Based</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Character-Based"><span class="toc-nav-number">3.1.2.</span> <span class="toc-nav-text">Character-Based</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Subword-Tokenization"><span class="toc-nav-number">3.1.3.</span> <span class="toc-nav-text">Subword Tokenization</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Loading-and-Saving"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Loading and Saving</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Encoding"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Encoding</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tokenization"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">tokenization</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#From-tokens-to-input-IDs"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">From tokens to input IDs</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Handling-Multiple-Sequences"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Handling Multiple Sequences</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Models-expect-a-batch-of-inputs"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Models expect a batch of inputs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Padding-the-inputs"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Padding the inputs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Attention-masks"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Attention masks</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Longer-sequences"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Longer sequences</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Putting-it-all-together"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Putting it all together</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#put-the-tokenization-steps-together"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">put the tokenization steps together</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Special-words"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">Special words</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Wrapping-up-From-tokenizer-to-model"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">Wrapping up: From tokenizer to model</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+
+      <!-- Sidebar Container -->
+      <div
+        class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container"
+      >
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5><a href="/tags/">FEATURED TAGS</a></h5>
+          <div class="tags">
+            
+            <a
+              class="tag"
+              href="/tags/#NLP"
+              title="NLP"
+              >NLP</a
+            >
+            
+            <a
+              class="tag"
+              href="/tags/#🤗"
+              title="🤗"
+              >🤗</a
+            >
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+ 
+<!-- async load function -->
+<script>
+  function async(u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener(
+        "load",
+        function (e) {
+          c(null, e);
+        },
+        false
+      );
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+  async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+    anchors.options = {
+      visible: "hover",
+      placement: "left",
+      icon: "ℬ",
+    };
+    anchors
+      .add()
+      .remove(".intro-header h1")
+      .remove(".subheading")
+      .remove(".sidebar-container h5");
+  });
+</script>
+
+<style type="text/css">
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Daucloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/1311700152">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="iconfont icon-QQ fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="mailto:xinyuan-23@mails.tsinghua.edu.cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="iconfont icon-youjian fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://space.bilibili.com/1933431920">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="iconfont icon-bilibili fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Daucloud 2024 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">
+                        <i>hexo-theme-snail</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=dusign&repo=hexo-theme-snail&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://Daucloud.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>
