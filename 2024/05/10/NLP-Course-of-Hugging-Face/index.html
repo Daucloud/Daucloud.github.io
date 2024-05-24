@@ -128,7 +128,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">392</span> and
+                                Words <span class="post-count">380</span> and
                                 Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -189,14 +189,14 @@
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -329,9 +329,6 @@
 <li>the encoder translate all the words</li>
 <li>the decoder is only allowed to translate by the past words; but later it can get all the outpus of encoer to better translate the word<br><img src="https://github.com/daucloud/imagecdn/raw/main/test/202404271755969.png" alt="image.png"></li>
 </ul>
-<h1 id="Encoder-Models"><a href="#Encoder-Models" class="headerlink" title="Encoder Models"></a>Encoder Models</h1><ul>
-<li>encoder model only use the encoder of a Transformer model</li>
-</ul>
 
 
         <hr />
@@ -383,6 +380,7 @@
 
           init({
             el: "#waline",
+            recordIP: false,
             serverURL: "https://waline-inxu.vercel.app/",
             reaction: true,
             emoji: ['https://unpkg.com/@waline/emojis@1.2.0/alus','https://unpkg.com/@waline/emojis@1.2.0/bilibili','https://unpkg.com/@waline/emojis@1.2.0/tieba'],
@@ -402,7 +400,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Pipeline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Pipeline()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Zero-shot-Classification"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Zero-shot Classification</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Text-Generation"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Text Generation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mask-filling"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Mask filling</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Named-entity-recognition"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Named entity recognition</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Question-answering"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Question answering</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Summarization"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Summarization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Translation"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Translation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Brief-intro-to-Transformers"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brief intro to Transformers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-categorization"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">General categorization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Transfer-Learning"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Transfer Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pretraning"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Pretraning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Fine-tuning"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Fine-tuning</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-architecture"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">General architecture</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Attention-layer"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Attention layer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Original-Architechture"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Original Architechture</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Encoder-Models"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Encoder Models</span></a></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Pipeline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Pipeline()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Zero-shot-Classification"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Zero-shot Classification</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Text-Generation"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Text Generation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mask-filling"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Mask filling</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Named-entity-recognition"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Named entity recognition</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Question-answering"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Question answering</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Summarization"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Summarization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Translation"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Translation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Brief-intro-to-Transformers"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brief intro to Transformers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-categorization"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">General categorization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Transfer-Learning"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Transfer Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pretraning"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Pretraning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Fine-tuning"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Fine-tuning</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-architecture"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">General architecture</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Attention-layer"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Attention layer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Original-Architechture"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Original Architechture</span></a></li></ol></li></ol>
             
           
           </div>
