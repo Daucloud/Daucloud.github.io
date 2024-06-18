@@ -164,13 +164,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -178,7 +171,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -186,6 +179,13 @@
                         
                         <li>
                             <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -236,42 +236,20 @@
             <!-- 标签云 -->
             <div id='tag_clouds' class="tags">
                 
-                    <a href="#cs learning" title="cs learning" rel="1">cs learning</a>
-                
                     <a href="#杂七杂八的东西" title="杂七杂八的东西" rel="3">杂七杂八的东西</a>
+                
+                    <a href="#cs learning" title="cs learning" rel="1">cs learning</a>
                 
                     <a href="#intro to data science" title="intro to data science" rel="1">intro to data science</a>
                 
-                    <a href="#CS Learing" title="CS Learing" rel="1">CS Learing</a>
-                
                     <a href="#CS Learning" title="CS Learning" rel="1">CS Learning</a>
+                
+                    <a href="#CS Learing" title="CS Learing" rel="1">CS Learing</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="cs learning">
-                    <span class="tag-text">cs learning</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2024/01/18/生成对抗网络/">
-                        <h2 class="post-title">
-                            生成对抗网络
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="杂七杂八的东西">
@@ -326,6 +304,28 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="cs learning">
+                    <span class="tag-text">cs learning</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2024/01/18/生成对抗网络/">
+                        <h2 class="post-title">
+                            生成对抗网络
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="intro to data science">
                     <span class="tag-text">intro to data science</span>
                 </span>
@@ -348,8 +348,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="CS Learing">
-                    <span class="tag-text">CS Learing</span>
+                <span class="fa fa-tag listing-seperator" id="CS Learning">
+                    <span class="tag-text">CS Learning</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -357,9 +357,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2024/05/14/NLP-Course-of-Hugging-Face/">
+                     <a href="/2024/05/10/NLP-Course-of-Hugging-Face/">
                         <h2 class="post-title">
-                            Chapter2 Using 🤗 Transformers
+                            Chapter1 Transformer Models
                         </h2>
                         
                             <h3 class="post-subtitle">
@@ -374,8 +374,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="CS Learning">
-                    <span class="tag-text">CS Learning</span>
+                <span class="fa fa-tag listing-seperator" id="CS Learing">
+                    <span class="tag-text">CS Learing</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -383,9 +383,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2024/05/10/NLP-Course-of-Hugging-Face/">
+                     <a href="/2024/05/14/NLP-Course-of-Hugging-Face/">
                         <h2 class="post-title">
-                            Chapter1 Transformer Models
+                            Chapter2 Using 🤗 Transformers
                         </h2>
                         
                             <h3 class="post-subtitle">
@@ -607,6 +607,21 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
