@@ -178,14 +178,14 @@
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -236,9 +236,9 @@
             <!-- 标签云 -->
             <div id='tag_clouds' class="tags">
                 
-                    <a href="#随笔" title="随笔" rel="3">随笔</a>
-                
                     <a href="#GAN" title="GAN" rel="1">GAN</a>
+                
+                    <a href="#随笔" title="随笔" rel="3">随笔</a>
                 
                     <a href="#NLP" title="NLP" rel="2">NLP</a>
                 
@@ -250,8 +250,8 @@
 
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="随笔">
-                    <span class="tag-text">随笔</span>
+                <span class="fa fa-tag listing-seperator" id="GAN">
+                    <span class="tag-text">GAN</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -259,15 +259,22 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2023/12/09/Hello-World/">
+                     <a href="/2024/01/18/生成对抗网络/">
                         <h2 class="post-title">
-                            Hello,World!
+                            生成对抗网络
                         </h2>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
                 </div>
                 <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="随笔">
+                    <span class="tag-text">随笔</span>
+                </span>
                 
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -289,9 +296,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2024/03/17/漫步杂记/">
+                     <a href="/2023/12/09/Hello-World/">
                         <h2 class="post-title">
-                            漫步杂记
+                            Hello,World!
                         </h2>
                         
                     </a>
@@ -299,21 +306,14 @@
                 </div>
                 <hr>
                 
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="GAN">
-                    <span class="tag-text">GAN</span>
-                </span>
-                
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2024/01/18/生成对抗网络/">
+                     <a href="/2024/03/17/漫步杂记/">
                         <h2 class="post-title">
-                            生成对抗网络
+                            漫步杂记
                         </h2>
                         
                     </a>
@@ -635,7 +635,8 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 </html>
