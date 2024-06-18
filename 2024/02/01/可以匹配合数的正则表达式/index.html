@@ -124,7 +124,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">745</span> and
+                                Words <span class="post-count">742</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -185,7 +185,7 @@
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -199,7 +199,7 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -259,32 +259,18 @@
       <div
         class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
       >
-        <p>最近读到一个可以判断素数的正则表达式（匹配成功则不是素数）：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure>
-这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
-<p>然而，仔细阅读了一下原理后却发现它的确可以，不过需要一步预处理，即把十进制数字转换为“1的数组”：0为空字符串，1为1，2为11，3为111……
-至此，就可以开始我们的匹配： -
-<code>/^1?$/</code>很好理解，匹配到是空字符串（0）或 1，自然不是合数； -
-<code>/^(11+?)\1+$/</code>则正是该表达式的精妙所在。其利用到了正则表达式匹配时<strong>回溯</strong>的特性。让我们具体解释一下：
-1.
-<code>(11+?)</code>匹配的是<strong>至少两个1</strong>，但是因为进行的是懒惰匹配，所以最开始匹配到的是<code>11</code>，并被捕获到了分组<code>\1</code>中。后面部分中，如果<code>11</code>重复了一次或者更多次，那么就是合数。这又是为什么呢？其实非常容易理解：如果数字<span
-class="math inline">\(a\)</span>匹配成功，意味着<span
-class="math inline">\(a\)</span>化作的“1的数组”<strong>恰好</strong>由<strong>不少于</strong>2个<code>11</code>组成，也就是，<span
-class="math inline">\(\exists b&gt;1\land b \in \mathbb N,
-a=2b\)</span>，这自然意味着<span
-class="math inline">\(a\)</span>是一个合数(在这种情况下，<span
-class="math inline">\(a\)</span>还是偶数)。 2.
-如果<code>11</code>匹配失败了呢？这就是本法最核心的部分了：匹配器会进行回溯，对下一个满足<code>(11+?)</code>的<code>111</code>进行<code>\1+</code>匹配的尝试。同理上一步，如果匹配成功，该数字大于3且含有一个因数3，自然是合数。
-3. 接下来，“匹配 - 回溯”不断进行。如果<span
-class="math inline">\(n\)</span>是合数，会在匹配不超过<span
-class="math inline">\(\sqrt{n}\)</span>次后成功；反之，会一直匹配到第<span
-class="math inline">\(n\)</span>次，最后匹配失败。</p>
-<p>可见，<code>/^1?$|^(11+?)\1+$/</code>的实现想法是非常朴素的：列举比<span
-class="math inline">\(n\)</span>小的所有正整数<span
-class="math inline">\(i\)</span>，判断<span
-class="math inline">\(n\)</span>是否可以被<span
-class="math inline">\(i\)</span>整除。比如： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个自然数是否为素数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)<span class="keyword">if</span> (n % i == <span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>最近读到一个可以判断素数的正则表达式（匹配成功则不是素数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^1?$|^(11+?)\1+$&#x2F;</span><br></pre></td></tr></table></figure><br>这么精炼，颇有些出乎我的意料。因为在我的印象中大多数正则表达式都十分丑陋，比如匹配邮箱的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+&#x2F;&#x3D;?^_&#96;&#123;|&#125;~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])</span><br></pre></td></tr></table></figure></p>
+<p>然而，仔细阅读了一下原理后却发现它的确可以，不过需要一步预处理，即把十进制数字转换为“1的数组”：0为空字符串，1为1，2为11，3为111……<br>至此，就可以开始我们的匹配：</p>
+<ul>
+<li><code>/^1?$/</code>很好理解，匹配到是空字符串（0）或 1，自然不是合数；</li>
+<li><code>/^(11+?)\1+$/</code>则正是该表达式的精妙所在。其利用到了正则表达式匹配时<strong>回溯</strong>的特性。让我们具体解释一下：</li>
+</ul>
+<ol>
+<li><code>(11+?)</code>匹配的是<strong>至少两个1</strong>，但是因为进行的是懒惰匹配，所以最开始匹配到的是<code>11</code>，并被捕获到了分组<code>\1</code>中。后面部分中，如果<code>11</code>重复了一次或者更多次，那么就是合数。这又是为什么呢？其实非常容易理解：如果数字$a$匹配成功，意味着$a$化作的“1的数组”<strong>恰好</strong>由<strong>不少于</strong>2个<code>11</code>组成，也就是，$\exists b&gt;1\land b \in \mathbb N, a=2b$，这自然意味着$a$是一个合数(在这种情况下，$a$还是偶数)。</li>
+<li>如果<code>11</code>匹配失败了呢？这就是本法最核心的部分了：匹配器会进行回溯，对下一个满足<code>(11+?)</code>的<code>111</code>进行<code>\1+</code>匹配的尝试。同理上一步，如果匹配成功，该数字大于3且含有一个因数3，自然是合数。</li>
+<li>接下来，“匹配 - 回溯”不断进行。如果$n$是合数，会在匹配不超过$\sqrt{n}$次后成功；反之，会一直匹配到第$n$次，最后匹配失败。</li>
+</ol>
+<p>可见，<code>/^1?$|^(11+?)\1+$/</code>的实现想法是非常朴素的：列举比$n$小的所有正整数$i$，判断$n$是否可以被$i$整除。比如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个自然数是否为素数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)<span class="keyword">if</span> (n % i == <span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>但是，得到这么精炼的表达式的关键实则在于对于正则表达式匹配机制的深刻理解(懒惰匹配和回溯法的结合)，而这正是值得我们深思和学习的地方。</p>
 
 
@@ -640,22 +626,6 @@ class="math inline">\(i\)</span>整除。比如： <figure class="highlight cpp"
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>
