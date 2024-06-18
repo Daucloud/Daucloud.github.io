@@ -185,7 +185,7 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -199,14 +199,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -359,95 +359,69 @@ class="math inline">\(s\alpha_1+t\alpha_2\)</span>，并确保<span
 class="math inline">\(\left(A-\lambda_iI\right)x=s\alpha_1+t\alpha_2\)</span>有解（通过考虑增广矩阵<span
 class="math inline">\(\begin{bmatrix}A&amp;s\alpha_1+t\alpha_2\end{bmatrix}\)</span>）</li>
 </ol>
-<p>举一道例题，便于理解 <em>问：求此复数域上方阵的 Jordan
-标准型和可逆矩阵 P：</em></p>
-<span class="math display">\[
+<blockquote>
+<p>举一道例题，便于理解</p>
+<p><em>问：求此复数域上方阵的 Jordan 标准型和可逆矩阵 P：</em></p>
+<p><span class="math display">\[
 \begin{bmatrix}
 1&amp;-3&amp; 0&amp;3\\
 -2&amp;-6&amp; 0&amp;13\\
 0&amp;-3&amp; 1&amp;3\\
 -1&amp;-4&amp; 0&amp;8\\
 \end{bmatrix}
-\]</span> <em>解:</em> $$f()=()<sup>4,m()=()</sup>3,故 Jordan 标准型为
-<span class="math display">\[\begin{bmatrix}
+\]</span></p>
+<p><em>解:</em></p>
+<p><span
+class="math display">\[f(\lambda)=(\lambda-1)^4,m(\lambda)=(\lambda-1)^3,故
+Jordan 标准型为
+\begin{bmatrix}
     1&amp;0&amp;0&amp;0\\
     1&amp;1&amp;0&amp;0\\
     0&amp;1&amp;1&amp;0\\
     0&amp;0&amp;0&amp;1\\
-\end{bmatrix}\]</span>
-\ Ker(A-I)=span(
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}\\
+Ker(A-I)=span\left(\begin{bmatrix}
     3\\1\\0\\1
-
-\end{bmatrix}\]</span>
-,
-<span class="math display">\[\begin{bmatrix}
+\end{bmatrix},\begin{bmatrix}
 0\\0\\1\\0
-\end{bmatrix}\]</span>
-) <span class="math display">\[
-\]</span>取_4=
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}\right)\\
+取\alpha_4=\begin{bmatrix}
     3\\1\\0\\1
-
-\end{bmatrix}\]</span>
-，设_3=
-<span class="math display">\[\begin{bmatrix}
+\end{bmatrix}，设\alpha_3=\begin{bmatrix}
 3s\\s\\t\\s
-\end{bmatrix}\]</span>
-<span class="math display">\[
-\]</span>欲使(A-I)_2=_3 有解，考虑增广矩阵
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}\\
+欲使(A-I)\alpha_2=\alpha_3 有解，考虑增广矩阵\begin{bmatrix}
     0&amp;-3&amp;0&amp;3&amp;3s\\
     -2&amp;-7&amp;0&amp;13&amp;s\\
     0&amp;-3&amp;0&amp;3&amp;t\\
     -1&amp;-4&amp;0&amp;7&amp;s\\
-
-\end{bmatrix}\]</span>
-<p>，可知 3s=t$$</p>
-$$不妨取 s=1，故_3=
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}，可知 3s=t\\
+不妨取 s=1，故\alpha_3=\begin{bmatrix}
     3\\1\\3\\1
-
-\end{bmatrix}\]</span>
-，并解得_2=
-<span class="math display">\[\begin{bmatrix}
+\end{bmatrix}，并解得\alpha_2=\begin{bmatrix}
 3u+3\\v-1\\0\\0
-\end{bmatrix}\]</span>
-<p>$$</p>
-<p><span class="math display">\[再令(A-I)\alpha_1=\alpha_2有解\]</span>
-$$</p>
-考虑增广矩阵
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}\\
+再令(A-I)\alpha_1=\alpha_2有解\\
+考虑增广矩阵\begin{bmatrix}
     0&amp;-3&amp;0&amp;3&amp;3u+3\\
     -2&amp;-7&amp;0&amp;13&amp;u-1\\
     0&amp;-3&amp;0&amp;3&amp;v\\
     -1&amp;-4&amp;0&amp;7&amp;w\\
-
-\end{bmatrix}\]</span>
-<p>，有 3u+3=v,2w-=u-1 $$</p>
-<p><span class="math display">\[
+\end{bmatrix}，有 3u+3=v,2w-\frac{v}{3}=u-1\\
 不妨取u=1,v=6,w=1,
 故有\alpha_2=\begin{bmatrix}
     6\\0\\6\\1
 \end{bmatrix},\alpha_1=\begin{bmatrix}
 7\\-2\\0\\0
-\end{bmatrix}
-\]</span></p>
-$$故知 P=
-<span class="math display">\[\begin{bmatrix}
-
+\end{bmatrix}\\
+故知 P=\begin{bmatrix}
     7&amp;6&amp;3&amp;3\\
     -2&amp;0&amp;1&amp;1\\
     0&amp;6&amp;3&amp;0\\
     0&amp;1&amp;1&amp;1
-
-\end{bmatrix}\]</span>
-<p>$$</p>
+\end{bmatrix}
+\]</span></p>
+</blockquote>
 <h3 id="方法-2-2">方法 2</h3>
 <p>由于<span class="math inline">\(\lambda I-A\)</span>和<span
 class="math inline">\(\lambda I-J\)</span>有相同的 Smith 标准型，而
@@ -477,7 +451,7 @@ class="math inline">\(d_1(\lambda),...,d_r(\lambda)\)</span> 2.
 class="math inline">\(D_1,...,D_r\)</span> 3.
 初等因子：不变因子的准素因子全体（1 不计入） &gt;
 不变因子和行列式因子互相决定：<span
-class="math display">\[D_k=\prod_{i=1}^kd_i,d_k=\frac{D_k}{D_{k-1}}\]</span></li>
+class="math inline">\(D_k=\prod_{i=1}^kd_i,d_k=\frac{D_k}{D_{k-1}}\)</span></li>
 <li>对于数字矩阵，其三种基本因子指的是<span
 class="math inline">\(\lambda I-A\)</span>的三种基本因子（但是 1
 均不计入）</li>
