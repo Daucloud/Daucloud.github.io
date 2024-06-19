@@ -128,7 +128,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">380</span> and
+                                Words <span class="post-count">386</span> and
                                 Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -189,13 +189,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -203,7 +196,7 @@
 
                         
                         <li>
-                            <a href="/categories/">Categories</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -211,6 +204,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
                         </li>
                         
                     
@@ -264,11 +264,15 @@
         class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container"
       >
         <blockquote>
-<p>最近打算入门 NLP，在自学 🤗 的<a href="https://huggingface.co/learn/nlp-course/chapter1/1" target="_blank" rel="noopener">NLP Course</a>，但是感觉自己过于摆烂了。于是打算边学边做笔记，争取在期末之前把本课程学完</p>
+<p>最近打算入门 NLP，在自学 🤗 的<a
+href="https://huggingface.co/learn/nlp-course/chapter1/1">NLP
+Course</a>，但是感觉自己过于摆烂了。于是打算边学边做笔记，争取在期末之前把本课程学完</p>
 </blockquote>
-<h1 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline()"></a><code>Pipeline()</code></h1><ul>
+<h1 id="pipeline"><code>Pipeline()</code></h1>
+<ul>
 <li>the most basic object in the 🤗 Transformers llibrary</li>
-<li>It can:<ul>
+<li>It can:
+<ul>
 <li>feature-extraction(get a vector representing the text)</li>
 <li>fill-task</li>
 <li>ner(entity recognition)</li>
@@ -278,56 +282,81 @@
 <li>text-generation</li>
 <li>translation</li>
 <li>zero-shot classification</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Zero-shot-Classification"><a href="#Zero-shot-Classification" class="headerlink" title="Zero-shot Classification"></a>Zero-shot Classification</h2><ul>
+<h2 id="zero-shot-classification">Zero-shot Classification</h2>
+<ul>
 <li>you can casually assign the labels</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classifier = pipeline(<span class="string">"zero-shot-classification"</span>)</span><br><span class="line">classifier(</span><br><span class="line">		   <span class="string">"I play Genshin Impact!"</span>,</span><br><span class="line">		   candidate_labels=[<span class="string">"op"</span>,<span class="string">"2-dimensional"</span>]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="Text-Generation"><a href="#Text-Generation" class="headerlink" title="Text Generation"></a>Text Generation</h2><ul>
+<h2 id="text-generation">Text Generation</h2>
+<ul>
 <li>involves randomness</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">generator=pipeline(<span class="string">"text-generation"</span>)</span><br><span class="line">generator(</span><br><span class="line">		  <span class="string">"prompts"</span>,</span><br><span class="line">		  max_length=<span class="number">15</span>, <span class="comment">#the max length of the text</span></span><br><span class="line">		  num_return_sequence=<span class="number">3</span> <span class="comment">#How many texts are gonna generated</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
-<h2 id="Mask-filling"><a href="#Mask-filling" class="headerlink" title="Mask filling"></a>Mask filling</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unmasker=pipeline(<span class="string">"fill-mask"</span>)</span><br><span class="line">unmasker(<span class="string">"I play &lt;mask&gt; Impact!"</span>,top_k=<span class="number">2</span>) <span class="comment">#top_k decides the time it does;&lt;mask&gt; depends on what model you are using</span></span><br></pre></td></tr></table></figure>
-<h2 id="Named-entity-recognition"><a href="#Named-entity-recognition" class="headerlink" title="Named entity recognition"></a>Named entity recognition</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ner=pipeline(<span class="string">"ner"</span>,grouped_entities=<span class="literal">True</span>)<span class="comment">#'grouped_entities=True' is used to enable the model to put multi-words together</span></span><br></pre></td></tr></table></figure>
-<h2 id="Question-answering"><a href="#Question-answering" class="headerlink" title="Question answering"></a>Question answering</h2><ul>
+<h2 id="mask-filling">Mask filling</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unmasker=pipeline(<span class="string">"fill-mask"</span>)</span><br><span class="line">unmasker(<span class="string">"I play &lt;mask&gt; Impact!"</span>,top_k=<span class="number">2</span>) <span class="comment">#top_k decides the time it does;&lt;mask&gt; depends on what model you are using</span></span><br></pre></td></tr></table></figure>
+<h2 id="named-entity-recognition">Named entity recognition</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ner=pipeline(<span class="string">"ner"</span>,grouped_entities=<span class="literal">True</span>)<span class="comment">#'grouped_entities=True' is used to enable the model to put multi-words together</span></span><br></pre></td></tr></table></figure>
+<h2 id="question-answering">Question answering</h2>
+<ul>
 <li>answer a question using given context</li>
-<li>extracting answers from the context instead of generating answers</li>
+<li>extracting answers from the context instead of generating
+answers</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">question_answerer=pipeline(<span class="string">"question-answering"</span>)</span><br><span class="line">question_answerer(</span><br><span class="line">				  question=<span class="string">"where do I work?"</span>,</span><br><span class="line">				  context=<span class="string">"My name is Sylvain and I work at Hugging Face in Brooklyn"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="Summarization"><a href="#Summarization" class="headerlink" title="Summarization"></a>Summarization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">summarizer=pipeline(<span class="string">"summarization"</span>)</span><br><span class="line">summarizer(</span><br><span class="line">		   <span class="string">"""</span></span><br><span class="line"><span class="string">context</span></span><br><span class="line"><span class="string">		   """</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">translator=pipeline(<span class="string">"translation"</span>,model=<span class="string">"modelName"</span>)</span><br><span class="line">translator(<span class="string">"contex"</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="Brief-intro-to-Transformers"><a href="#Brief-intro-to-Transformers" class="headerlink" title="Brief intro to Transformers"></a>Brief intro to Transformers</h1><h2 id="General-categorization"><a href="#General-categorization" class="headerlink" title="General categorization"></a>General categorization</h2><ul>
+<h2 id="summarization">Summarization</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">summarizer=pipeline(<span class="string">"summarization"</span>)</span><br><span class="line">summarizer(</span><br><span class="line">		   <span class="string">"""</span></span><br><span class="line"><span class="string">context</span></span><br><span class="line"><span class="string">		   """</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="translation">Translation</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">translator=pipeline(<span class="string">"translation"</span>,model=<span class="string">"modelName"</span>)</span><br><span class="line">translator(<span class="string">"contex"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="brief-intro-to-transformers">Brief intro to Transformers</h1>
+<h2 id="general-categorization">General categorization</h2>
+<ul>
 <li>GPT-like: auto-regressive</li>
 <li>BERT-like: auto-encoding</li>
 <li>BART/T5-like: sequence-to-sequence</li>
 </ul>
-<h2 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h2><h3 id="Pretraning"><a href="#Pretraning" class="headerlink" title="Pretraning"></a>Pretraning</h3><ul>
-<li>the act of traing a model from scratch<br><img src="https://github.com/daucloud/imagecdn/raw/main/test/202404251741650.png" alt=""></li>
+<h2 id="transfer-learning">Transfer Learning</h2>
+<h3 id="pretraning">Pretraning</h3>
+<ul>
+<li>the act of traing a model from scratch <img
+src="https://github.com/daucloud/imagecdn/raw/main/test/202404251741650.png" /></li>
 </ul>
-<h3 id="Fine-tuning"><a href="#Fine-tuning" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h3><ul>
-<li>training on the top of pretrained models with a dataset specific to the target task<br><img src="https://github.com/daucloud/imagecdn/raw/main/test/202404251746195.png" alt="image.png"></li>
+<h3 id="fine-tuning">Fine-tuning</h3>
+<ul>
+<li>training on the top of pretrained models with a dataset specific to
+the target task <img
+src="https://github.com/daucloud/imagecdn/raw/main/test/202404251746195.png"
+alt="image.png" /></li>
 </ul>
-<h2 id="General-architecture"><a href="#General-architecture" class="headerlink" title="General architecture"></a>General architecture</h2><ul>
-<li>Transformers model is generally composed of two blocks:<ul>
+<h2 id="general-architecture">General architecture</h2>
+<ul>
+<li>Transformers model is generally composed of two blocks:
+<ul>
 <li>Encoder: receives inputs and builds representations for them</li>
 <li>Decoder: use the outputs of encoder to generate target outputs</li>
-</ul>
-</li>
-<li>Various tasks requires different blocks:<ul>
+</ul></li>
+<li>Various tasks requires different blocks:
+<ul>
 <li>Encoder-only: sentence classfication; NER</li>
 <li>Decoder-only: text generation</li>
-<li>Encoder-decoder models or sequence-to-sequence models: translation or summarization</li>
+<li>Encoder-decoder models or sequence-to-sequence models: translation
+or summarization</li>
+</ul></li>
 </ul>
-</li>
+<h2 id="attention-layer">Attention layer</h2>
+<ul>
+<li>pay specific attention to certain words while ignoring others more
+or less</li>
 </ul>
-<h2 id="Attention-layer"><a href="#Attention-layer" class="headerlink" title="Attention layer"></a>Attention layer</h2><ul>
-<li>pay specific attention to certain words while ignoring others more or less</li>
-</ul>
-<h2 id="Original-Architechture"><a href="#Original-Architechture" class="headerlink" title="Original Architechture"></a>Original Architechture</h2><ul>
+<h2 id="original-architechture">Original Architechture</h2>
+<ul>
 <li>the encoder translate all the words</li>
-<li>the decoder is only allowed to translate by the past words; but later it can get all the outpus of encoer to better translate the word<br><img src="https://github.com/daucloud/imagecdn/raw/main/test/202404271755969.png" alt="image.png"></li>
+<li>the decoder is only allowed to translate by the past words; but
+later it can get all the outpus of encoer to better translate the word
+<img
+src="https://github.com/daucloud/imagecdn/raw/main/test/202404271755969.png"
+alt="image.png" /></li>
 </ul>
 
 
@@ -410,7 +439,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Pipeline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Pipeline()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Zero-shot-Classification"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Zero-shot Classification</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Text-Generation"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Text Generation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mask-filling"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Mask filling</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Named-entity-recognition"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Named entity recognition</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Question-answering"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Question answering</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Summarization"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Summarization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Translation"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Translation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Brief-intro-to-Transformers"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brief intro to Transformers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-categorization"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">General categorization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Transfer-Learning"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Transfer Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pretraning"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Pretraning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Fine-tuning"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Fine-tuning</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#General-architecture"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">General architecture</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Attention-layer"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Attention layer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Original-Architechture"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Original Architechture</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pipeline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Pipeline()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#zero-shot-classification"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Zero-shot Classification</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#text-generation"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Text Generation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mask-filling"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Mask filling</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#named-entity-recognition"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Named entity recognition</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#question-answering"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Question answering</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#summarization"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Summarization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#translation"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Translation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#brief-intro-to-transformers"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brief intro to Transformers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#general-categorization"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">General categorization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#transfer-learning"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Transfer Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pretraning"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Pretraning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fine-tuning"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Fine-tuning</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#general-architecture"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">General architecture</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#attention-layer"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Attention layer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#original-architechture"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Original Architechture</span></a></li></ol></li></ol>
             
           
           </div>
@@ -708,6 +737,22 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 </html>
