@@ -185,13 +185,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -207,6 +200,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -483,7 +483,8 @@ class="math inline">\(Q=\begin{bmatrix}w_1&amp;w_2&amp;\cdots&amp;w_n\end{bmatri
 \]</span> 上学期的内容，不过多赘述</p>
 <h1 id="规范方阵谱分解">规范方阵谱分解</h1>
 <ol type="1">
-<li>求出规范方阵 A 的特征多项式，并解出特征值则<span
+<li>求出规范方阵 <span class="math inline">\(A\)</span>
+的特征多项式，并解出特征值则<span
 class="math inline">\(U^{-1}AU=diag(\lambda_{1},\cdots,\lambda_n)\)</span></li>
 <li>求出<span
 class="math inline">\(Ker(\lambda_iI-A)\)</span>的一组基，对其施行
@@ -493,17 +494,23 @@ class="math inline">\(U\)</span></li>
 </ol>
 <h1 id="jordan-标准型的应用和可对角化条件">Jordan
 标准型的应用和可对角化条件</h1>
-<p>设 A 为 n 阶复方阵，则如下命题等价：</p>
+<p>设 <span class="math inline">\(A\)</span> 为 n
+阶复方阵，则如下命题等价：</p>
 <ol type="1">
-<li>A 在<span class="math inline">\(\mathbb{C}\)</span>可对角化</li>
-<li>A 的几何重数为 n（有 n 个线性无关的特征向量）</li>
-<li>A 在复数域上的初等因子均为 1 次（即初等因子均无重根）</li>
-<li>A 的不变因子均无重根</li>
-<li>A 的极小多项式无重根</li>
-<li><span class="math inline">\(\forall
-c\in\mathbb{C},rank(cI-A)=rank\left((cI-A)^2\right)\)</span>
-此外，以上命题的一个充分条件是<span
-class="math inline">\(f(\lambda)\)</span>无重根</li>
+<li><p><span class="math inline">\(A\)</span> 在<span
+class="math inline">\(\mathbb{C}\)</span>可对角化</p></li>
+<li><p><span class="math inline">\(A\)</span> 的几何重数为 n（有 n
+个线性无关的特征向量）</p></li>
+<li><p><span class="math inline">\(A\)</span> 在复数域上的初等因子均为 1
+次（即初等因子均无重根）</p></li>
+<li><p><span class="math inline">\(A\)</span>
+的不变因子均无重根</p></li>
+<li><p><span class="math inline">\(A\)</span>
+的极小多项式无重根</p></li>
+<li><p><span class="math inline">\(\forall
+c\in\mathbb{C},rank(cI-A)=rank\left((cI-A)^2\right)\)</span></p>
+<p>此外，以上命题的一个充分条件是<span
+class="math inline">\(f(\lambda)\)</span>无重根</p></li>
 </ol>
 
 
