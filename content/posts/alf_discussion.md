@@ -1,6 +1,6 @@
 +++
 date = '2026-08-22T00:42:10+08:00'
-draft = true
+draft = false
 title = '关于 ALF 中 Bias 引起的 MoE 路由翻转的简要讨论'
 categories = ['Learning']
 tags = ['LLM','MoE','ALF']
