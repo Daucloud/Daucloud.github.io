@@ -66,6 +66,10 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
+      - name: Build search index (Pagefind)
+        # Indexes the rendered HTML (regions marked data-pagefind-body). One shared index
+        # with Chinese segmentation so English and Chinese posts show up in the same search.
+        run: npx --yes pagefind@1 --site public --force-language zh
       - name: Cache Save
         id: cache-save
         uses: actions/cache/save@v4
