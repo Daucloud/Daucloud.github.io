@@ -6,6 +6,7 @@ description = 'NLP Course of Hugging Face'
 aliases = ['/2024/05/14/NLP-Course-of-Hugging-Face/']
 tags = ['NLP', 'Hugging Face']
 categories = ['Learning']
+language = 'en'
 +++
 
 # Behind the pipeline

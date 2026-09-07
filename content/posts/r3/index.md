@@ -4,6 +4,7 @@ draft = false
 title = 'RL Note 3: Markov Decision Process'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
+language = 'en'
 +++
 
 # Prologue

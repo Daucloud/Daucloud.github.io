@@ -3,6 +3,7 @@ date = '2025-10-28T15:23:52+08:00'
 title = 'RL Note 1: Basics'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
+language = 'en'
 +++
 
 # Prologue

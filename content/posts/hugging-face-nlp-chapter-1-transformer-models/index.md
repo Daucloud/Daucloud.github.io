@@ -6,6 +6,7 @@ description = 'NLP Course of Hugging Face'
 aliases = ['/2024/05/10/NLP-Course-of-Hugging-Face/']
 tags = ['NLP', 'Hugging Face']
 categories = ['Learning']
+language = 'en'
 +++
 > 最近打算入门 NLP，在自学 🤗 的 [NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)，但是感觉自己过于摆烂了。于是打算边学边做笔记，争取在期末之前把本课程学完
 
