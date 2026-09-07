@@ -105,6 +105,27 @@ weight = 40
     source = 'hugo_stats.json'
     target = 'assets/notwatching/hugo_stats.json'
 
+# Taxonomies: the default two plus `series` for multi-part posts (front matter: series = ['RL Notes'])
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+# Related content (used by the theme's related-posts partial)
+[related]
+  includeNewer = true
+  threshold = 20
+  toLower = true
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'categories'
+    weight = 60
+  [[related.indices]]
+    name = 'date'
+    weight = 10
+
 # Image processing defaults for the theme's render-image hook / figure shortcode
 [imaging]
   quality = 85

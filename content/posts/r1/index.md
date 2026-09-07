@@ -4,6 +4,7 @@ title = 'RL Note 1: Basics'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
 language = 'en'
+series = ['RL Notes']
 +++
 
 # Prologue

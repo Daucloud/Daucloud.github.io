@@ -5,6 +5,7 @@ title = 'RL Note 2: Multi-Armed Bandits'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
 language = 'en'
+series = ['RL Notes']
 +++
 
 # Prologue
