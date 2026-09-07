@@ -12,7 +12,7 @@ categories = ['Learning']
 
 生成对抗网络 (Generative Adversarial Network, GAN) 是一种十分流行的机器学习模型。自2014年Ian Goodfellow等人首次提出以来，GAN迅速在学术界和工业界引发了热烈的反响，许多有影响力的工作层出不穷。图一是累积的GAN论文数量，其火热程度可见一斑。
 
-![](https://github.com/daucloud/imagecdn/raw/main/test/202401181914378.png)
+![](imagecdn-202401181914378.png)
 
 Figure 1: Cumulative number of GAN papers
 
@@ -38,7 +38,7 @@ GAN全称为生成对抗网络。顾名思义，其在本质上是一种生成�
 2.  **固定判别器$D$，训练生成器$G$：** 使 $G$ 生成的样本($G(z)$)尽可能贴近真实样本，即让生成器$G$骗过判别器$D$
 3.  **迭代：** 循环1. 2.至一定次数，此时生成器$G$产生的样本足以“以假乱真”，判别器$D$辨认真实样本和生成样本成功的概率都为$\frac1 2$，二者达到了纳什平衡[^2]。
 
-> 训练示意图：![](https://github.com/daucloud/imagecdn/raw/main/test/202401181914603.png)
+> 训练示意图：![](imagecdn-202401181914603.png)
 >
 > Figure 2: 训练过程示意图
 >
@@ -101,7 +101,7 @@ $$
 \min_G\max_D V(D,G)=\mathbb{E}_{x\sim p_{data}(x)}[\log D(x|y)]+\mathbb{E}_{z\sim p_z(z)}[\log(1-D(G(z|y)))]
 $$
 
-![Cgan,icgan](https://aovoc.github.io/assets/pics/cgan-arch2.PNG)
+![Cgan,icgan](aovoc-cgan-arch2.png)
 
 Figure 3: CGAN和GAN的对比
 
@@ -119,7 +119,7 @@ DCGAN做出的主要改变有：
 
 - 修改激活函数：生成器输出层使用Tanh，其余层使用ReLU；判别器均使用LeakyReLU
 
-![](https://github.com/daucloud/imagecdn/raw/main/test/202401181914603.png)
+![](imagecdn-202401181914603.png)
 
 Figure 4: 生成器转置卷积层示意图
 
@@ -127,7 +127,7 @@ Figure 4: 生成器转置卷积层示意图
 
 WGAN[^6] (Wasserstein Generative Adversarial Networks) 引入了Wasserstein距离代替原来的JS散度作为GAN的损失函数，彻底解决了GAN训练不稳定的问题，是GAN发展史上里程碑式的工作之一。
 
-<img src="https://pic1.zhimg.com/80/v2-6be6e2ef3d15c4b10c2a943e9bf4db70_1440w.jpg#width=60%" style="zoom:67%;" alt="img" />
+<img src="zhimg-cgan.jpg" style="zoom:67%;" alt="img" />
 
 Figure 5: WGAN算法
 
@@ -147,7 +147,7 @@ Figure 5: WGAN算法
 
 1968年，毕加索曾说：”计算机是没有用的。它们只会告诉你答案”。但在同一场拍卖会上，没有一幅毕加索的画作成交价格超过了「Edmond de Belamy」，这不禁令人唏嘘不已。
 
-![](https://github.com/daucloud/imagecdn/raw/main/test/202401181922436.png)
+![](imagecdn-202401181922436.png)
 
 Figure 6: 「Edmond de Belamy」
 
@@ -155,7 +155,7 @@ Figure 6: 「Edmond de Belamy」
 
 [thispersondoesnotexist.com](https://thispersondoesnotexist.com/) 每次进入该网址，都会生成一张世界上并不存在的人脸，而这正是使用GAN进行生成的。
 
-![](https://github.com/daucloud/imagecdn/raw/main/test/202401181917230.png)
+![](imagecdn-202401181917230.png)
 
 Figure 7: This Person Does Not Exist
 
@@ -163,7 +163,7 @@ Figure 7: This Person Does Not Exist
 
 使用GAN[^7]，你可以随心所欲生成二次元~~老婆~~头像：
 
-![](https://github.com/daucloud/imagecdn/raw/main/test/202401181917189.png)
+![](imagecdn-202401181917189.png)
 
 Figure 8: GAN生成的二次元头像
 

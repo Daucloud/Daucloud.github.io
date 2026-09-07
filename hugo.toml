@@ -105,6 +105,11 @@ weight = 40
     source = 'hugo_stats.json'
     target = 'assets/notwatching/hugo_stats.json'
 
+# Image processing defaults for the theme's render-image hook / figure shortcode
+[imaging]
+  quality = 85
+  resampleFilter = 'Lanczos'
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'

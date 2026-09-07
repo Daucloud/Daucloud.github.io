@@ -13,7 +13,7 @@ language = 'en'
 
 `pipeline()` groups preprocessing, model inference, and postprocessing together.
 
-![Pipeline overview](https://cdn.jsdelivr.net/gh/Daucloud/imagecdn/test/202404291430930.png)
+![Pipeline overview](imagecdn-202404291430930.png)
 
 ## Preprocessing with a tokenizer
 
@@ -45,7 +45,7 @@ print(inputs)
 
 The model converts input IDs into logits.
 
-![Model output](https://raw.githubusercontent.com/Daucloud/imagecdn/main/test/202405140923963.png)
+![Model output](imagecdn-202405140923963.png)
 
 🤗 provides the `AutoModel` class, which corresponds to the hidden-states step.
 
