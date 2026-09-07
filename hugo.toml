@@ -33,6 +33,11 @@ ignoreLogs = ['warning-goldmark-raw-html']
         title = true
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    # Class-based output; the theme ships light/dark Chroma palettes and highlights each block once.
+    noClasses = false
+    lineNos = true
+    lineNumbersInTable = true
   [markup.tableOfContents]
     startLevel = 1
     endLevel = 6
