@@ -1,5 +1,5 @@
 baseURL = 'https://www.daucloud.com/'
-title = "Daucloud's Blog"
+title = "Daucloud’s Blog"
 theme = 'void'
 
 # 界面文案为英文（i18n 走 en.toml），但内容以中文为主，所以 <html lang> 默认 zh-CN；
