@@ -4,6 +4,8 @@ draft = false
 title = 'RL Note 2: Multi-Armed Bandits'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
+language = 'en'
+series = ['RL Notes']
 +++
 
 # Prologue
@@ -83,7 +85,6 @@ As mentioned [before](#sub-linear-regret), we should make the regret grow slower
 
 It's easy to find out any algorithm cannot be worse than linear, since:
 
-<span id='linear-lower-bound'>
 $$
 \begin{aligned}
 \mathbf R(T) &= \sum_{t=1}^T\left(\mu^*-\mu(A_t(\omega))\right) \\
@@ -92,13 +93,23 @@ $$
 &= \Omega(T)
 \end{aligned}
 $$
+{#linear-lower-bound}
+
 where $\mu' = \min\limits_{1\le k\le K} \mu_k, \Delta = \mu^*-\mu'$.
-</span>
 
 Hence, a wise algorithm should be sub-linear, i.e. $o(T)$.
 Two common lower bounds are:
-- Gap-independent: $$\Omega(\sqrt{TK})$$
-- <div id='gap-dependent-lower-bound'>Gap-dependent: $$\Omega\left(\sum_{a_i \ne a^*} \left( \frac{\Delta_i}{KL(P_{a_i}, P_{a^*})} \right) \log T\right)$$</div>
+- Gap-independent:
+
+  $$
+  \Omega(\sqrt{TK})
+  $$
+
+- <a id="gap-dependent-lower-bound"></a>Gap-dependent:
+
+  $$
+  \Omega\left(\sum_{a_i \ne a^*} \left( \frac{\Delta_i}{KL(P_{a_i}, P_{a^*})} \right) \log T\right)
+  $$
 
 where $K$ is the number of arms; $\Delta_i$ is the gap between the mean of $a_*$ and $a_i$; the gap-independent means it's hard to identify the gap between the arms; gap-dependent is the opposite.
 
@@ -372,13 +383,12 @@ $$
 Differentiating the RHS with respect to $m$ shows it is minimized at $$m=\max\left(1,\left\lceil\frac{4}{\Delta^2}\log\left(\frac{n\Delta^2}{4}\right)\right\rceil\right),$$
 which implies
 
-<div id='etc-lower-bound'>
 $$
 \boxed{
 R_{\operatorname{ETC}(m)} (n) \le \min \left( n\Delta, \Delta + \frac{4}{\Delta} \left( 1 + \max \left( 0, \log \left( \frac{n\Delta^2}{4} \right) \right) \right) \right)
 }
 $$
-</div>
+{#etc-lower-bound}
 
 Note that $m \ge 1$, and $R_{\operatorname{ETC}(m)} (n)$ cannot exceed $n\Delta$ as discussed [above](#linear-lower-bound). Informally, this bound says that, for fixed gap $\Delta$, the regret of ETC grows only logarithmically with the horizon $n$, but with a relatively large constant and the need to know (or tune around) $\Delta$ to choose $m$.
 

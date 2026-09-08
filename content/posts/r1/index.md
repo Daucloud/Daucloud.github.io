@@ -3,6 +3,8 @@ date = '2025-10-28T15:23:52+08:00'
 title = 'RL Note 1: Basics'
 tags = ['Course Notes', 'Reinforcement Learning']
 categories = ['Learning']
+language = 'en'
+series = ['RL Notes']
 +++
 
 # Prologue
@@ -70,11 +72,10 @@ These two concepts are closely related to [Action vs. Reward](#action-vs-reward)
 
 ## How does the agent take an action?
 As shown in the [figure](#image-rl-overview) above, we can abstract the RL process as:
-<span id='eq_oar'>
 $$
 o_1, a_1, r_1, \ldots, o_t, a_t, r_t, \ldots, o_T, a_T, r_T
 $$
-</span>
+{#eq_oar}
 where $o$ denotes observations, $a$ denotes actions, and $r$ denotes rewards; $t$ is the current time step; $k < t$ refers to the history, and $k > t$ refers to the predicted future.
 
 This sequence describes the standard RL loop: the agent observes the environment, chooses an action, receives feedback, and then observes the updated environment, and so on so forth.

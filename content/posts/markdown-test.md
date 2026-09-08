@@ -4,7 +4,15 @@ date: 2025-03-23
 draft: false
 tags: ["markdown", "test"]
 categories: ["Misc"]
+language: en
+# 主题演示页：保留可访问，但不出现在列表 / RSS / sitemap 中
+build:
+  list: never
 ---
+
+```callout {.neutral title="About this page"}
+This is a **theme demo page** for [hugo-theme-void](https://github.com/Daucloud/hugo-theme-void). It exercises every Markdown element the theme styles, so it is kept online for reference but hidden from the post list, RSS feed and sitemap.
+```
 
 # Markdown Format Test
 

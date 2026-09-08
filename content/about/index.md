@@ -2,6 +2,7 @@
 title = "About"
 layout = "about"
 type = "page"
+language = 'en'
 +++
 
 I am an undergraduate student at Tsinghua University, majoring in [Computer Science and Technology](https://www.cs.tsinghua.edu.cn/). You can access my CV [here](./CV_en.pdf).

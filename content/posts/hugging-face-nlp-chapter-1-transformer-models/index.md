@@ -6,6 +6,7 @@ description = 'NLP Course of Hugging Face'
 aliases = ['/2024/05/10/NLP-Course-of-Hugging-Face/']
 tags = ['NLP', 'Hugging Face']
 categories = ['Learning']
+language = 'en'
 +++
 > 最近打算入门 NLP，在自学 🤗 的 [NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)，但是感觉自己过于摆烂了。于是打算边学边做笔记，争取在期末之前把本课程学完
 
@@ -105,12 +106,12 @@ translator("contex")
 ### Pretraning
 
 - the act of traing a model from scratch  
-  ![](https://github.com/daucloud/imagecdn/raw/main/test/202404251741650.png)
+  ![](imagecdn-202404251741650.png)
 
 ### Fine-tuning
 
 - training on the top of pretrained models with a dataset specific to the target task  
-  ![image.png](https://github.com/daucloud/imagecdn/raw/main/test/202404251746195.png)
+  ![image.png](imagecdn-202404251746195.png)
 
 ## General architecture
 
@@ -130,4 +131,4 @@ translator("contex")
 
 - the encoder translate all the words
 - the decoder is only allowed to translate by the past words; but later it can get all the outpus of encoer to better translate the word  
-  ![image.png](https://github.com/daucloud/imagecdn/raw/main/test/202404271755969.png)
+  ![image.png](imagecdn-202404271755969.png)

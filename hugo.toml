@@ -1,9 +1,16 @@
 baseURL = 'https://www.daucloud.com/'
-languageCode = 'en-US'
-Title = 'Daucloud'
-theme = "void"
+title = "Daucloud's Blog"
+theme = 'void'
+
+# 界面文案为英文（i18n 走 en.toml），但内容以中文为主，所以 <html lang> 默认 zh-CN；
+# 英文文章在 front matter 里用 language = "en" 逐篇标注，主题据此输出对应的 <html lang>。
+languageCode = 'zh-CN'
+defaultContentLanguage = 'en'
+hasCJKLanguage = true
+timeZone = 'Asia/Shanghai'
+
 enableGitInfo = true
-defaultContentLanguage = "en"
+enableRobotsTXT = true
 relativeURLs = false
 canonifyURLs = false
 # 忽略特定的警告日志
@@ -26,44 +33,55 @@ ignoreLogs = ['warning-goldmark-raw-html']
         title = true
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    # Class-based output; the theme ships light/dark Chroma palettes and highlights each block once.
+    noClasses = false
+    lineNos = true
+    lineNumbersInTable = true
   [markup.tableOfContents]
     startLevel = 1
     endLevel = 6
     ordered = false
 
-# 社交媒体链接
 [params]
+  description = 'Share knowledge, experience, and ideas'
+  # 社交媒体链接
   [params.social]
     github = "https://github.com/Daucloud"
     zhihu = "https://zhihu.com/people/daucloud"
     email = "1311700152@qq.com"
   [params.avatar]
     url = "/avatar.jpg"
+
 [[menus.main]]
 name = 'Home'
+identifier = 'nav_home'
 pageRef = '/'
 weight = 10
 
 [[menus.main]]
 name = 'Posts'
+identifier = 'nav_posts'
 pageRef = '/posts'
 weight =  20
 
 [[menus.main]]
 name = 'Categories'
+identifier = 'nav_categories'
 pageRef = '/categories'
 weight = 25
 
 [[menus.main]]
 name = 'Tags'
+identifier = 'nav_tags'
 pageRef = '/tags'
 weight = 30
 
 [[menus.main]]
 name = 'About'
+identifier = 'nav_about'
 pageRef = '/about'
 weight = 40
-
 
 [build]
   [build.buildStats]
@@ -74,6 +92,7 @@ weight = 40
   [[build.cachebusters]]
     source = '(postcss|tailwind)\.config\.js'
     target = 'css'
+
 [module]
   [module.hugoVersion]
     extended = true
@@ -86,17 +105,31 @@ weight = 40
     source = 'hugo_stats.json'
     target = 'assets/notwatching/hugo_stats.json'
 
-[languages]
-  [languages.zh]
-    languageName = "中文"
-    weight = 2
-    title = "Daucloud's Blog"
-    description = "分享知识、经验和想法"
-  [languages.en]
-    languageName = "English"
-    weight = 1
-    title = "Daucloud's Blog"
-    description = "Share knowledge, experience, and ideas"
+# Taxonomies: the default two plus `series` for multi-part posts (front matter: series = ['RL Notes'])
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+# Related content (used by the theme's related-posts partial)
+[related]
+  includeNewer = true
+  threshold = 20
+  toLower = true
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'categories'
+    weight = 60
+  [[related.indices]]
+    name = 'date'
+    weight = 10
+
+# Image processing defaults for the theme's render-image hook / figure shortcode
+[imaging]
+  quality = 85
+  resampleFilter = 'Lanczos'
 
 [caches]
   [caches.images]
@@ -106,8 +139,6 @@ weight = 40
   [services.disqus]
     shortname = 'dauclouds-blog'
 
-# 隐私设置
 [privacy]
   [privacy.disqus]
     disable = false
-    simple = true  # 使用简化模式，减少第三方请求
